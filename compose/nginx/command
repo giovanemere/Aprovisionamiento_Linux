@@ -1,0 +1,32 @@
+cd /home/giovanemere/Aprovisionamiento_Linux/compose/nginx
+docker-compose up nginx -d
+docker-compose up nginx down
+
+
+
+/etc/hosts
+sudo vi /etc/hosts
+127.0.0.1 jira.giovanemere.minikube.io www.jira.giovanemere.minikube.io jira
+127.0.0.1 bitbucket.giovanemere.minikube.io www.bitbucket.giovanemere.minikube.io bitbucket
+127.0.0.1 prometheus.giovanemere.minikube.io www.prometheus.giovanemere.minikube.io prometheus
+127.0.0.1 jenkins.giovanemere.minikube.io www.jenkins.giovanemere.minikube.io jenkins
+127.0.0.1 grafana.giovanemere.minikube.io www.grafana.giovanemere.minikube.io grafana
+
+
+#URL
+http://jira.giovanemere.minikube.io
+http://bitbucket.giovanemere.minikube.io
+http://jenkins.giovanemere.minikube.io
+http://grafana.giovanemere.minikube.io
+http://prometheus.giovanemere.minikube.io
+
+
+
+
+docker exec -it a3b42cb4750c bash
+tail -f /var/log/nginx/*.log
+
+cat /etc/nginx/nginx.conf
+curl -v http://giovanemere.minikube.io:8080
+curl -v http://jira.giovanemere.minikube.io:8080
+curl -v http://bitbucket.giovanemere.minikube.io:7990

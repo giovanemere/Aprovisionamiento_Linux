@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  rancher:
+    image: rancher/rancher:latest
+    restart: always
+    privileged: true
+    command: --no-cacerts
+    ports:
+      - '8443:443'
+      - '8080:80'
+    volumes:
+      - rancher-vol:/var/lib/rancher
+      - ./rancher.giovanemere.com.crt.pem:/etc/rancher/ssl/cert.pem:ro
+      - ./rancher.giovanemere.com.key.pem:/etc/rancher/ssl/key.pem:ro
+    extra_hosts:
+      - "rancher.giovanemere.com:192.168.137.29"
+
+volumes:
+  rancher-vol:

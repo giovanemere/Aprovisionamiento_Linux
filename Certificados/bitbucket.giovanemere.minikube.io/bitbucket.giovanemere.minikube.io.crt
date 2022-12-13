@@ -1,0 +1,79 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            db:e1:e2:32:a5:15:2a:28:11:b2:07:e6:19:8c:eb:e9
+        Signature Algorithm: ecdsa-with-SHA512
+        Issuer: CN=Easy-DC-CA
+        Validity
+            Not Before: Sep 13 20:37:04 2022 GMT
+            Not After : Aug 28 20:37:04 2025 GMT
+        Subject: C=CO, ST=Colombia, L=Bogota, O=Easy-DC.local, OU=Tecnologia, CN=bitbucket.giovanemere.minikube.io/emailAddress=admin@bitbucket.giovanemere.minikube.io.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                RSA Public-Key: (2048 bit)
+                Modulus:
+                    00:b9:e4:4b:1f:47:0a:7e:44:6e:4f:f2:a8:9b:f2:
+                    3b:74:3e:46:e7:63:68:f7:f7:31:99:8f:b9:77:ec:
+                    de:4b:35:25:34:f3:3a:cf:91:c4:7a:d9:e6:f9:b0:
+                    9c:3e:33:3d:61:be:72:d4:84:d0:ed:f2:5d:ab:c6:
+                    22:07:84:f2:e1:a1:18:b3:b0:ed:4e:37:3a:cf:fc:
+                    1d:df:33:42:b6:fe:61:2e:1e:14:b8:87:cd:71:37:
+                    e6:ae:cc:cd:8b:cf:59:31:16:c1:df:4a:11:48:97:
+                    b3:ae:15:58:0e:2d:da:02:98:e5:a1:fa:c6:8c:fc:
+                    8a:cd:7a:fb:18:57:b7:23:d4:73:15:36:49:c6:99:
+                    6d:49:c9:0a:a0:25:49:1a:f1:26:63:cb:61:13:6d:
+                    5f:89:5a:25:0c:e4:ea:49:d8:bb:61:c9:a6:ad:55:
+                    12:89:74:71:87:b0:58:a2:e6:79:3d:4f:77:17:1f:
+                    9a:ca:ec:b3:36:ea:7d:f8:ff:a2:dd:4f:6a:5a:53:
+                    14:a7:4a:b5:ba:4a:85:75:e6:12:33:3e:49:33:bf:
+                    91:ae:ce:b8:b9:96:14:ba:ce:1a:d8:c7:43:1d:6c:
+                    ac:97:90:48:72:72:63:b9:b4:29:fa:84:ba:b7:8e:
+                    d9:30:fd:22:41:c8:a0:9e:c4:5e:2d:e9:70:50:eb:
+                    05:45
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                AB:56:74:52:AC:F7:D9:4F:E8:E7:E7:25:5E:F5:4A:39:B9:05:D3:05
+            X509v3 Authority Key Identifier: 
+                keyid:82:55:57:DB:6F:41:B9:7F:D9:22:27:14:D6:1B:D9:FB:73:6B:EA:CB
+                DirName:/CN=Easy-DC-CA
+                serial:1D:B4:58:1A:FA:EC:F4:4A:10:F4:E5:04:48:1F:2D:34:C3:95:55:3B
+
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+            X509v3 Subject Alternative Name: 
+                DNS:bitbucket.giovanemere.minikube.io
+    Signature Algorithm: ecdsa-with-SHA512
+         30:66:02:31:00:93:60:8d:b5:db:4a:bb:ee:fa:7b:56:c2:37:
+         6c:f7:b8:9d:2b:12:a5:59:55:0d:10:22:c8:cf:56:fc:d8:c8:
+         45:16:e2:52:7a:8a:b7:c5:32:23:f0:76:85:04:fc:b8:92:02:
+         31:00:bd:2c:e9:14:9d:a0:30:7f:ae:57:a2:55:f7:7e:3f:b7:
+         71:29:2d:bc:dc:62:31:7a:9c:3e:e7:9e:c2:ca:a2:cd:00:96:
+         c9:7e:b8:f1:bb:a5:1e:3d:0f:33:a5:90:34:92
+-----BEGIN CERTIFICATE-----
+MIIDlzCCAxygAwIBAgIRANvh4jKlFSooEbIH5hmM6+kwCgYIKoZIzj0EAwQwFTET
+MBEGA1UEAwwKRWFzeS1EQy1DQTAeFw0yMjA5MTMyMDM3MDRaFw0yNTA4MjgyMDM3
+MDRaMIHGMQswCQYDVQQGEwJDTzERMA8GA1UECAwIQ29sb21iaWExDzANBgNVBAcM
+BkJvZ290YTEWMBQGA1UECgwNRWFzeS1EQy5sb2NhbDETMBEGA1UECwwKVGVjbm9s
+b2dpYTEqMCgGA1UEAwwhYml0YnVja2V0Lmdpb3ZhbmVtZXJlLm1pbmlrdWJlLmlv
+MTowOAYJKoZIhvcNAQkBFithZG1pbkBiaXRidWNrZXQuZ2lvdmFuZW1lcmUubWlu
+aWt1YmUuaW8uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAueRL
+H0cKfkRuT/Kom/I7dD5G52No9/cxmY+5d+zeSzUlNPM6z5HEetnm+bCcPjM9Yb5y
+1ITQ7fJdq8YiB4Ty4aEYs7DtTjc6z/wd3zNCtv5hLh4UuIfNcTfmrszNi89ZMRbB
+30oRSJezrhVYDi3aApjlofrGjPyKzXr7GFe3I9RzFTZJxpltSckKoCVJGvEmY8th
+E21fiVolDOTqSdi7YcmmrVUSiXRxh7BYouZ5PU93Fx+ayuyzNup9+P+i3U9qWlMU
+p0q1ukqFdeYSMz5JM7+Rrs64uZYUus4a2MdDHWysl5BIcnJjubQp+oS6t47ZMP0i
+QcignsReLelwUOsFRQIDAQABo4HPMIHMMAkGA1UdEwQCMAAwHQYDVR0OBBYEFKtW
+dFKs99lP6OfnJV71Sjm5BdMFMFAGA1UdIwRJMEeAFIJVV9tvQbl/2SInFNYb2ftz
+a+rLoRmkFzAVMRMwEQYDVQQDDApFYXN5LURDLUNBghQdtFga+uz0ShD05QRIHy00
+w5VVOzATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwLAYDVR0RBCUw
+I4IhYml0YnVja2V0Lmdpb3ZhbmVtZXJlLm1pbmlrdWJlLmlvMAoGCCqGSM49BAME
+A2kAMGYCMQCTYI2120q77vp7VsI3bPe4nSsSpVlVDRAiyM9W/NjIRRbiUnqKt8Uy
+I/B2hQT8uJICMQC9LOkUnaAwf65XolX3fj+3cSktvNxiMXqcPueewsqizQCWyX64
+8bulHj0PM6WQNJI=
+-----END CERTIFICATE-----

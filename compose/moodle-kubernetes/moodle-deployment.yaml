@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: moodle
+  name: moodle
+  namespace: moodle
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moodle
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: moodle
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 1000
+      containers:
+        - env:
+            - name: MOODLE_DATABASE_HOST
+              value: db
+            - name: MOODLE_DATABASE_NAME
+              value: bitnami_moodle
+            - name: MOODLE_DATABASE_PASSWORD
+              value: bitnami
+            - name: MOODLE_DATABASE_PORT_NUMBER
+              value: "3306"
+            - name: MOODLE_DATABASE_USER
+              value: bn_moodle
+            - name: MOODLE_EMAIL
+              value: correo.interno@codesa.com.co
+            - name: MOODLE_PASSWORD
+              value: codesa2021
+            - name: MOODLE_USERNAME
+              value: root
+          image: bitnami/moodle
+          imagePullPolicy: IfNotPresent
+          name: moodle
+          ports:
+            - containerPort: 8080
+            - containerPort: 8443
+          resources: 
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+          volumeMounts:
+            - mountPath: /bitnami/moodle
+              name: moodle-data
+            - mountPath: /bitnami/moodledata
+              name: moodledata
+      restartPolicy: Always
+      volumes:
+        - name: moodle-data
+          persistentVolumeClaim:
+            claimName: moodle-pv-claim0
+        - name: moodledata
+          persistentVolumeClaim:
+            claimName: moodle-pv-claim1
+status: {}

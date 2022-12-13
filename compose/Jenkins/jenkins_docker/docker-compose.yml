@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  jenkins-devops:
+    image: jenkins/jenkins:lts
+    restart: unless-stopped
+    ports:
+      - 8091:8080
+      - 8491:8443
+      - 50000:50000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "./jenkins_home:/var/jenkins_home"
+      - "./keystore.jks:/etc/keystore.jks"
+    environment:
+      - JENKINS_OPTS=--httpPort=8080 --httpsPort=8443 --prefix=/devops/jenkins --httpsKeyStore=/etc/keystore.jks --httpsKeyStorePassword=changeit
+      - JAVA_OPTS=-Djavax.net.ssl.trustStore=/usr/local/openjdk-8/jre/lib/security/cacerts
+      - SONAR_SCANNER_OPTS=-Xmx1024m
+      - TZ=America/Bogota
+    privileged: true

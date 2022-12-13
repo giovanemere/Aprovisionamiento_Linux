@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: db
+  name: db
+  namespace: moodle
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 1000
+      containers:
+        - env:
+            - name: MARIADB_CHARACTER_SET
+              value: utf8mb4
+            - name: MARIADB_COLLATE
+              value: utf8mb4_unicode_ci
+            - name: MARIADB_DATABASE
+              value: bitnami_moodle
+            - name: MARIADB_PASSWORD
+              value: bitnami
+            - name: MARIADB_ROOT_PASSWORD
+              value: root
+            - name: MARIADB_USER
+              value: bn_moodle
+          image: docker.io/bitnami/mariadb:10.5
+          imagePullPolicy: IfNotPresent
+          name: db
+          ports:
+            - containerPort: 3306
+          resources: {}
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - mountPath: /bitnami/mariadb
+              name: db-mariadb
+      restartPolicy: Always
+      volumes:
+        - name: db-mariadb
+          persistentVolumeClaim:
+            claimName: db-pv-claim

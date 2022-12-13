@@ -1,0 +1,15 @@
+https://github.com/zabbix/zabbix-docker
+
+cd /home/giovanemere/Aprovisionamiento_Linux/compose/zabbix
+docker-compose up
+docker-compose down
+
+docker exec -it atlassian_database_1  psql -U postgres
+CREATE DATABASE zabbix;
+CREATE DATABASE zabbixNew;
+\l
+\q
+
+
+docker exec -it 5245e72b10b4 bash
+curl -v telnet://192.168.137.5:5432

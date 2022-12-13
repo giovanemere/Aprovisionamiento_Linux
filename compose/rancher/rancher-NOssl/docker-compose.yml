@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  rancher:
+    image: rancher/rancher:latest
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - '80:80'
+    volumes:
+      - rancher-vol:/var/lib/rancher
+    command: --no-cacerts
+
+volumes:
+  rancher-vol:

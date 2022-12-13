@@ -1,0 +1,5 @@
+cd /home/giovanemere/Aprovisionamiento_Linux/compose/artifactory/docker-compose/artifactory
+sudo docker-compose -f artifactory-oss.yml up -d
+sudo docker-compose -f artifactory-oss.yml down
+
+http://192.168.137.5:8081/artifactory

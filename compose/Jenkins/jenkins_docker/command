@@ -1,0 +1,18 @@
+cd /home/giovanemere/Aprovisionamiento_Linux/compose/Jenkins/jenkins_release
+docker-compose up -d
+
+https://192.168.137.5:8491/devops/jenkins
+http://192.168.137.5:8091/devops/jenkins 
+http://jenkins.giovanemere.minikube.io:8091/devops/jenkins/login?from=%2Fdevops%2Fjenkins%2F
+
+C:\Windows\System32\drivers\etc\hosts
+
+192.168.137.5 giovanemere.minikube.io
+192.168.137.5 jira.giovanemere.minikube.io
+192.168.137.5 confluence.giovanemere.minikube.io
+192.168.137.5 bitbucket.giovanemere.minikube.io
+192.168.137.5 prometheus.giovanemere.minikube.io
+192.168.137.5 jenkins.giovanemere.minikube.io
+
+
+docker exec -it a3b42cb4750c bash

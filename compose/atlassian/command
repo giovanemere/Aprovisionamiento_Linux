@@ -1,0 +1,58 @@
+
+https://github.com/omidraha/atlassian/blob/master/configs/nginx/nginx.conf.template
+export DOMAIN=giovanemere.minikube.io
+cd /home/giovanemere/Aprovisionamiento_Linux/compose/atlassian/
+docker-compose -p atlassian up -d
+docker-compose -p atlassian down
+
+sudo vi /etc/hosts
+127.0.0.1 jira.giovanemere.minikube.io www.jira.giovanemere.minikube.io
+127.0.0.1 bitbucket.giovanemere.minikube.io www.bitbucket.giovanemere.minikube.io
+127.0.0.1 prometheus.giovanemere.minikube.io www.prometheus.giovanemere.minikube.io
+127.0.0.1 jenkins.giovanemere.minikube.io www.jenkins.giovanemere.minikube.io
+127.0.0.1 grafana.giovanemere.minikube.io www.grafana.giovanemere.minikube.io
+
+docker exec -it atlassian_database_1  psql -U postgres
+DROP DATABASE jira;
+CREATE DATABASE jira;
+CREATE DATABASE bitbucket;
+\l
+\q
+
+http://jira.giovanemere.minikube.io:8082
+http://bitbucket.giovanemere.minikube.io:7990
+
+docker volume ls
+docker volume rm atlassian_bitbucket-data
+docker volume rm atlassian_database-data
+docker volume rm atlassian_jira-data
+
+#Borrar todos los volumenes
+docker volume prune
+
+docker ps
+
+#Conexion DB Jira
+192.168.137.5
+5432
+jira
+USER=postgres
+PASSWORD=password
+
+
+#Conexion DB bitbcuket
+192.168.137.5
+5432
+bitbucket
+USER=postgres
+PASSWORD=password
+aplication giovanemere.minikube.io
+http://jira.giovanemere.minikube.io:8082
+
+giovanemere.minikube.io
+
+docker ps
+docker exec -it 66ec31f0acc5 bash
+
+curl -v telnet://jira.giovanemere.minikube.io:8082
+curl -v telnet://192.168.137.5:8082

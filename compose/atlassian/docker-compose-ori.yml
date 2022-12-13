@@ -1,0 +1,46 @@
+version: '3.4'
+services:
+  jira:
+    image: cptactionhank/atlassian-jira:7.9.2
+    restart: always
+    links:
+      - database
+    volumes:
+      - jira-data:/var/atlassian/jira
+
+  bitbucket:
+    image: atlassian/bitbucket-server:5.10.1
+    restart: always
+    links:
+      - database
+    volumes:
+      - bitbucket-data:/var/atlassian/application-data/bitbucket
+
+  database:
+    image: postgres:9.4
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - database-data:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - "80:80"
+    links:
+      - jira
+      - bitbucket
+    volumes:
+    - ./:/src
+    command: ./src/scripts/run_nginx.sh
+    environment:
+    - DOMAIN
+
+volumes:
+  jira-data:
+  bitbucket-data:
+  database-data:
+    driver: local  

@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+   nginx-proxy:
+     restart: always
+     image: jwilder/nginx-proxy
+     container_name: nginx-proxy
+     ports:
+       - "80:80"
+       - "443:443"
+     volumes:
+       - vhostd:/etc/nginx/vhost.d
+       - html:/usr/share/nginx/html
+       - certs:/etc/nginx/certs:ro
+       - /var/run/docker.sock:/tmp/docker.sock:ro
+       - confd:/etc/nginx/conf.d
+     labels:
+       - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+
+   nginx-letsencrypt:
+     restart: always
+     image: jrcs/letsencrypt-nginx-proxy-companion
+     container_name: letsencrypt
+     depends_on:
+       - nginx-proxy
+     volumes:
+       - /var/run/docker.sock:/var/run/docker.sock:ro
+       - certs:/etc/nginx/certs:rw
+       - confd:/etc/nginx/conf.d
+       - vhostd:/etc/nginx/vhost.d
+       - html:/usr/share/nginx/html
+
+   rancher:
+     image: rancher/rancher:v2.3.5
+     container_name: rancher
+     restart: always
+     expose:
+       - "80"
+     privileged: true
+     environment:
+       VIRTUAL_HOST: rancher.giovanemere.com
+       VIRTUAL_PORT: 80
+       LETSENCRYPT_HOST: rancher.giovanemere.com
+       LETSENCRYPT_EMAIL: admin@rancher.giovanemere.com
+     command: --no-cacerts
+
+volumes:
+  certs:
+  confd:
+  vhostd:
+  html:

@@ -1,0 +1,78 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            37:98:26:8f:91:bd:0e:f7:8b:be:5a:ee:f4:6e:36:9d
+        Signature Algorithm: ecdsa-with-SHA512
+        Issuer: CN=Easy-DC-CA
+        Validity
+            Not Before: Sep 13 20:36:11 2022 GMT
+            Not After : Aug 28 20:36:11 2025 GMT
+        Subject: C=CO, ST=Colombia, L=Bogota, O=Easy-DC.local, OU=Tecnologia, CN=jira.giovanemere.minikube.io/emailAddress=admin@jira.giovanemere.minikube.io.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                RSA Public-Key: (2048 bit)
+                Modulus:
+                    00:b7:1e:a5:d7:09:35:10:e3:99:70:eb:f2:68:68:
+                    18:7f:8f:7c:d3:75:8a:0e:e1:2f:ef:18:5e:2a:9e:
+                    ac:6f:51:a8:c2:7e:50:8c:d2:56:82:69:54:01:7b:
+                    8e:fe:aa:60:ca:35:c8:3a:f1:3d:77:b6:3b:96:5e:
+                    e4:57:8a:ff:14:94:c5:b9:24:e4:25:f8:07:2c:c9:
+                    3a:1c:75:e3:1d:b9:34:99:85:14:1b:be:ec:c0:17:
+                    b3:2e:c5:41:2a:a2:82:07:43:11:75:f4:e4:4a:11:
+                    29:a1:5c:f7:38:6c:07:5f:d8:16:47:17:6b:97:1a:
+                    19:03:72:fb:33:95:93:16:8d:e3:b9:16:77:40:3a:
+                    bf:75:0c:d9:a2:58:ac:c2:9d:c2:7b:e4:d1:66:a1:
+                    19:c9:6a:fc:e1:c2:90:93:a3:df:72:4b:43:13:2a:
+                    1c:89:a9:8e:d6:39:e0:50:7b:ae:d6:c2:ad:9c:30:
+                    c8:ff:e2:65:06:76:f0:21:7d:77:27:67:5d:86:1b:
+                    30:46:19:0d:ea:82:47:00:9e:77:df:a2:ad:13:85:
+                    ae:2c:0f:c8:c8:5a:3e:fe:b5:a5:70:b4:de:55:57:
+                    3e:7c:97:09:79:a0:3b:30:36:48:9c:ea:e0:a7:c8:
+                    46:7b:a5:36:f4:2c:38:87:15:d3:14:59:af:0d:f7:
+                    89:61
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                C7:87:27:DA:8A:3C:27:3C:A7:51:9D:7F:26:78:12:B7:B9:6C:C0:29
+            X509v3 Authority Key Identifier: 
+                keyid:82:55:57:DB:6F:41:B9:7F:D9:22:27:14:D6:1B:D9:FB:73:6B:EA:CB
+                DirName:/CN=Easy-DC-CA
+                serial:1D:B4:58:1A:FA:EC:F4:4A:10:F4:E5:04:48:1F:2D:34:C3:95:55:3B
+
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+            X509v3 Subject Alternative Name: 
+                DNS:jira.giovanemere.minikube.io
+    Signature Algorithm: ecdsa-with-SHA512
+         30:65:02:31:00:e5:8f:97:7f:0d:9c:cc:0c:fc:1c:71:87:ca:
+         a7:23:1d:b7:9f:90:9b:ad:df:41:ff:9b:79:08:4e:bc:a2:de:
+         cc:b8:4c:4f:37:05:5b:a9:32:c0:aa:18:93:23:d2:85:44:02:
+         30:27:61:6b:3e:88:03:a2:39:39:fa:8e:56:7b:b5:3e:a8:40:
+         33:34:6f:12:8f:0d:d7:be:9a:6a:52:d2:2e:d4:23:d1:a5:97:
+         b3:57:0e:12:62:61:36:48:b3:51:01:8a:8c
+-----BEGIN CERTIFICATE-----
+MIIDhjCCAwygAwIBAgIQN5gmj5G9DveLvlru9G42nTAKBggqhkjOPQQDBDAVMRMw
+EQYDVQQDDApFYXN5LURDLUNBMB4XDTIyMDkxMzIwMzYxMVoXDTI1MDgyODIwMzYx
+MVowgbwxCzAJBgNVBAYTAkNPMREwDwYDVQQIDAhDb2xvbWJpYTEPMA0GA1UEBwwG
+Qm9nb3RhMRYwFAYDVQQKDA1FYXN5LURDLmxvY2FsMRMwEQYDVQQLDApUZWNub2xv
+Z2lhMSUwIwYDVQQDDBxqaXJhLmdpb3ZhbmVtZXJlLm1pbmlrdWJlLmlvMTUwMwYJ
+KoZIhvcNAQkBFiZhZG1pbkBqaXJhLmdpb3ZhbmVtZXJlLm1pbmlrdWJlLmlvLmNv
+bTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALcepdcJNRDjmXDr8mho
+GH+PfNN1ig7hL+8YXiqerG9RqMJ+UIzSVoJpVAF7jv6qYMo1yDrxPXe2O5Ze5FeK
+/xSUxbkk5CX4ByzJOhx14x25NJmFFBu+7MAXsy7FQSqiggdDEXX05EoRKaFc9zhs
+B1/YFkcXa5caGQNy+zOVkxaN47kWd0A6v3UM2aJYrMKdwnvk0WahGclq/OHCkJOj
+33JLQxMqHImpjtY54FB7rtbCrZwwyP/iZQZ28CF9dydnXYYbMEYZDeqCRwCed9+i
+rROFriwPyMhaPv61pXC03lVXPnyXCXmgOzA2SJzq4KfIRnulNvQsOIcV0xRZrw33
+iWECAwEAAaOByjCBxzAJBgNVHRMEAjAAMB0GA1UdDgQWBBTHhyfaijwnPKdRnX8m
+eBK3uWzAKTBQBgNVHSMESTBHgBSCVVfbb0G5f9kiJxTWG9n7c2vqy6EZpBcwFTET
+MBEGA1UEAwwKRWFzeS1EQy1DQYIUHbRYGvrs9EoQ9OUESB8tNMOVVTswEwYDVR0l
+BAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMCcGA1UdEQQgMB6CHGppcmEuZ2lv
+dmFuZW1lcmUubWluaWt1YmUuaW8wCgYIKoZIzj0EAwQDaAAwZQIxAOWPl38NnMwM
+/Bxxh8qnIx23n5Cbrd9B/5t5CE68ot7MuExPNwVbqTLAqhiTI9KFRAIwJ2FrPogD
+ojk5+o5We7U+qEAzNG8Sjw3XvppqUtIu1CPRpZezVw4SYmE2SLNRAYqM
+-----END CERTIFICATE-----

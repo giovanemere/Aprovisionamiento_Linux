@@ -1,0 +1,14 @@
+
+cd /home/giovanemere/Aprovisionamiento_Linux/compose/postgress
+docker-compose -p postgress up -d
+docker-compose -p postgress down
+
+
+docker exec -it postgress_database_1  psql -U postgres
+DROP DATABASE jira;
+CREATE DATABASE jira;
+CREATE DATABASE bitbucket;
+CREATE DATABASE zabbix;
+CREATE DATABASE zabbixNew;
+\l
+\q

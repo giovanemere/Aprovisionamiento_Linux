@@ -1,0 +1,5 @@
+cd /home/giovanemere/Aprovisionamiento_Linux/compose/sonar
+docker-compose up
+docker-compose down
+
+http://192.168.137.5:3000
