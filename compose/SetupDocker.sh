@@ -2,10 +2,10 @@
 clear
 
 # set variables
-source ../unset.sh
+source unset.sh
 
 # set variables
-source ../variables_goblales.sh
+source variables_goblales.sh
 
 # set an infinite loop
 while :
