@@ -53,7 +53,7 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/Jenkins/jenkins_docker
-        docker-compose up -d
+        sudo docker-compose up -d
         
         echo -e "\n----------------------------------------------------------------------------------------"
         docker ps | grep jenkins
@@ -72,7 +72,7 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/Jenkins/jenkins_docker
-        docker-compose down
+        sudo docker-compose down
         docker ps | grep jenkins
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
@@ -86,10 +86,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/atlassian/
-        docker-compose -p atlassian up -d
+        sudo docker-compose -p atlassian up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep atlassian
+        sudo docker ps | grep atlassian
 
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   URL: http://jira.$domain:8082"
@@ -107,10 +107,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/atlassian/
-        docker-compose -p atlassian down
+        sudo docker-compose -p atlassian down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep atlassian
+        sudo docker ps | grep atlassian
         
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -123,10 +123,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/grafana/
-        docker-compose up -d
+        sudo docker-compose up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep grafana
+        sudo docker ps | grep grafana
 
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   URL: http://grafana.$domain:3000"
@@ -142,10 +142,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/grafana/
-        docker-compose down
+        sudo docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep grafana
+        sudo docker ps | grep grafana
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -158,10 +158,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/prometheus
-        docker-compose up -d
+        sudo docker-compose up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep prometheus
+        sudo docker ps | grep prometheus
 
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   port prometheus : 9090 "
@@ -177,10 +177,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/prometheus
-        docker-compose down
+        sudo docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep prometheus
+        sudo docker ps | grep prometheus
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -193,10 +193,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/sonar
-        docker-compose up
+        sudo docker-compose up
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep sonar
+        sudo docker ps | grep sonar
 
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   URL: http://$domain:9001"
@@ -212,10 +212,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/sonar
-        docker-compose down
+        sudo docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep sonar
+        sudo docker ps | grep sonar
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -228,13 +228,13 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/zabbix
-        docker-compose up
+        sudo docker-compose up
 
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   URL: http://$domain"
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep zabbix
+        sudo docker ps | grep zabbix
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -247,10 +247,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         ccd $pathUser/compose/zabbix
-        docker-compose down
+        sudo docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep zabbix
+        sudo docker ps | grep zabbix
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -269,7 +269,7 @@ do
         echo "   URL: http://$domain:8081"
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep artifactory
+        sudo docker ps | grep artifactory
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -285,7 +285,7 @@ do
         sudo docker-compose -f artifactory-oss.yml down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep artifactory
+        sudo docker ps | grep artifactory
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -297,13 +297,13 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/nginx
-        docker-compose up nginx -d
+        sudo docker-compose up nginx -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   URL: http://$domain"
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep nginx
+        sudo docker ps | grep nginx
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -315,10 +315,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/nginx
-        docker-compose up nginx down
+        sudo docker-compose up nginx down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep nginx
+        sudo docker ps | grep nginx
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -331,13 +331,13 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/postgress
-        docker-compose -p postgress up -d
+        sudo docker-compose -p postgress up -d
         
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   URL: http://$domain"
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep postgress
+        sudo docker ps | grep postgress
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -350,10 +350,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/postgress
-        docker-compose -p postgress down
+        sudo docker-compose -p postgress down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep postgress
+        sudo docker ps | grep postgress
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -366,13 +366,13 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/mysql
-        docker-compose -p mysql up -d
+        sudo docker-compose -p mysql up -d
         
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   URL: http://$domain"
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep mysql
+        sudo docker ps | grep mysql
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -385,10 +385,10 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/mysql
-        docker-compose -p mysql down
+        sudo docker-compose -p mysql down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep mysql
+        sudo docker ps | grep mysql
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -401,15 +401,15 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/moodle
-        docker-compose up -d --build
-        docker exec php7 chown www-data:www-data /var/www/moodledata
+        sudo docker-compose up -d --build
+        sudo docker exec php7 chown www-data:www-data /var/www/moodledata
         
         
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   URL: http://$domain"
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep moodle
+        sudo docker ps | grep moodle
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -422,31 +422,31 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/moodle
-        docker-compose down
+        sudo docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
-        docker ps | grep moodle
+        sudo docker ps | grep moodle
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
         ;;
 
     A)
-        docker ps -a
+        sudo docker ps -a
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
 		    read -p "Press [Enter] key to continue..." readEnterKey
         ;;
     
     B)
-        docker volume ls
+        sudo docker volume ls
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
 		    read -p "Press [Enter] key to continue..." readEnterKey
         ;;
 
     C)
-        docker volume prune
+        sudo docker volume prune
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
 		    read -p "Press [Enter] key to continue..." readEnterKey
@@ -465,12 +465,12 @@ do
         echo "   Eliminar Imagenes Docker "
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker images -a
+        sudo docker images -a
 
         read -p ">> Digite el ID de la Imagen : " IDImage
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker rmi $IDImage
+        sudo docker rmi $IDImage
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
 		    read -p "Press [Enter] key to continue..." readEnterKey
@@ -481,7 +481,7 @@ do
         echo "   Listar Imagenes Docker "
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker images -a
+        sudo docker images -a
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
 		    read -p "Press [Enter] key to continue..." readEnterKey
@@ -493,16 +493,16 @@ do
         echo "   Entrar a Contenedor Docker "
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker ps --format '{{.Names}}'
+        sudo docker ps --format '{{.Names}}'
 
         read -p ">> Digite el nombre de la Imagen : " nameImage
         echo -e "\n----------------------------------------------------------------------------------------"
 
         if [ "$nameImage" = "postgress_database_1" ] 
             then
-                docker exec -it $nameImage psql -U postgres
+                sudo docker exec -it $nameImage psql -U postgres
             else
-                docker exec -it $nameImage bash
+                sudo docker exec -it $nameImage bash
             fi
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
@@ -514,13 +514,13 @@ do
         echo "   Detalle de la Red Docker "
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker network ls
+        sudo docker network ls
 
         echo -e "\n----------------------------------------------------------------------------------------"
         read -p ">> Digite el ID de la red default [bridge] : " idInspect
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker network inspect "$idInspect"
+        sudo docker network inspect "$idInspect"
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
              read -p "Press [Enter] key to continue..." readEnterKey
@@ -531,13 +531,13 @@ do
         echo "   Detalle IP de Imagen Docker "
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker ps --format '{{.Names}}'
+        sudo docker ps --format '{{.Names}}'
 
         echo -e "\n----------------------------------------------------------------------------------------"
         read -p ">> Digite el ID de la red default (Names)] : "  idRed
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$idRed"
+        sudo docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$idRed"
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
              read -p "Press [Enter] key to continue..." readEnterKey
@@ -548,7 +548,7 @@ do
         echo    "  Telnet Puerto "
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker ps --format '{{.Names}}'
+        sudo docker ps --format '{{.Names}}'
 
         echo -e "\n----------------------------------------------------------------------------------------"
         read -p ">> Digite el ID de la red default (Names)] : "  IDImage
@@ -556,7 +556,7 @@ do
         read -p ">> Digite el puerto : "  Port
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker exec "$IDImage" curl -v telnet://"$DNS":"$Port"
+        sudo docker exec "$IDImage" curl -v telnet://"$DNS":"$Port"
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
              read -p "Press [Enter] key to continue..." readEnterKey
@@ -567,13 +567,13 @@ do
         echo "   Logs Imagen Docker "
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker ps -a
+        sudo docker ps -a
 
         echo -e "\n----------------------------------------------------------------------------------------"
         read -p ">> Digite el ID de la imagen  : "  idLog
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker logs "$idLog"
+        sudo docker logs "$idLog"
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
              read -p "Press [Enter] key to continue..." readEnterKey
