@@ -7,6 +7,8 @@ source unset.sh
 # set variables
 source variables_goblales.sh
 
+user=$(whoami)
+
 # set an infinite loop
 while :
 do
@@ -53,6 +55,8 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         
         cd $pathUser/compose/Jenkins/jenkins_docker
+        chown -R $user:$user $pathUser
+        chmod -R 777 $pathUser
         sudo docker-compose up -d
         
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -262,6 +266,9 @@ do
         echo "   Subir Servicio artifactory "
         echo -e "\n----------------------------------------------------------------------------------------"
         
+        chown -R $user:$user $pathUser
+        chmod -R 777 $pathUser
+
         cd $pathUser/compose/artifactory/docker-compose/artifactory
         sudo docker-compose -f artifactory-oss.yml up -d
 
