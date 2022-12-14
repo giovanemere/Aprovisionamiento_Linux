@@ -18,6 +18,7 @@ unset Range
 # set variables
 user=$(whoami)
 domain="giovanemere.minikube.io"
+pathCompose="/home/ubuntu/Repositorio/Aprovisionamiento_Linux"
 # set an infinite loop
 while :
 do
@@ -58,7 +59,7 @@ do
         echo "   Subir Servicio Jenkins "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/Jenkins/jenkins_docker
+        cd $pathCompose/compose/Jenkins/jenkins_docker
         docker-compose up -d
         
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -77,7 +78,7 @@ do
         echo "   Detener Servicio Jenkins "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/Jenkins/jenkins_docker
+        cd $pathCompose/compose/Jenkins/jenkins_docker
         docker-compose down
         docker ps | grep jenkins
 
@@ -91,7 +92,7 @@ do
         echo "   Subir Servicio atlassian "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/atlassian/
+        cd $pathCompose/compose/atlassian/
         docker-compose -p atlassian up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -110,7 +111,7 @@ do
         echo "   Detener Servicio atlassian "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/atlassian/
+        cd $pathCompose/compose/atlassian/
         docker-compose -p atlassian down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -126,7 +127,7 @@ do
         echo "   Subir Servicio grafana "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/grafana/
+        cd $pathCompose/compose/grafana/
         docker-compose up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -145,7 +146,7 @@ do
         echo "   Detener Servicio grafana "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/grafana/
+        cd $pathCompose/compose/grafana/
         docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -161,7 +162,7 @@ do
         echo "   Subir Servicio prometheus "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/prometheus
+        cd $pathCompose/compose/prometheus
         docker-compose up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -180,7 +181,7 @@ do
         echo "   Detener Servicio prometheus "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/prometheus
+        cd $pathCompose/compose/prometheus
         docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -196,7 +197,7 @@ do
         echo "   Subir Servicio sonar "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/sonar
+        cd $pathCompose/compose/sonar
         docker-compose up
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -215,7 +216,7 @@ do
         echo "   Detener Servicio sonar "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/sonar
+        cd $pathCompose/compose/sonar
         docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -231,7 +232,7 @@ do
         echo "   Subir Servicio zabbix "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/zabbix
+        cd $pathCompose/compose/zabbix
         docker-compose up
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -250,7 +251,7 @@ do
         echo "   Detener Servicio zabbix "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        ccd /home/giovanemere/Aprovisionamiento_Linux/compose/zabbix
+        cd $pathCompose/compose/zabbix
         docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -266,7 +267,7 @@ do
         echo "   Subir Servicio artifactory "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/artifactory/docker-compose/artifactory
+        cd $pathCompose/compose/artifactory/docker-compose/artifactory
         sudo docker-compose -f artifactory-oss.yml up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -285,7 +286,7 @@ do
         echo "   Detener Servicio artifactory "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/artifactory/docker-compose/artifactory
+        cd $pathCompose/compose/artifactory/docker-compose/artifactory
         sudo docker-compose -f artifactory-oss.yml down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -300,7 +301,7 @@ do
         echo "   Subir Servicio nginx "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/nginx
+        cd $pathCompose/compose/nginx
         docker-compose up nginx -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -318,7 +319,7 @@ do
         echo "   Detener Servicio nginx "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/nginx
+        cd $pathCompose/compose/nginx
         docker-compose up nginx down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -334,7 +335,7 @@ do
         echo "   Subir Servicio postgress "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/postgress
+        cd $pathCompose/compose/postgress
         docker-compose -p postgress up -d
         
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -353,7 +354,7 @@ do
         echo "   Detener Servicio postgress "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd /home/giovanemere/Aprovisionamiento_Linux/compose/postgress
+        cd $pathCompose/compose/postgress
         docker-compose -p postgress down
 
         echo -e "\n----------------------------------------------------------------------------------------"
