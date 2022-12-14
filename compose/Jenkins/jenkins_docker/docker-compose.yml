@@ -2,6 +2,9 @@ version: "3.8"
 services:
   jenkins-devops:
     image: jenkins/jenkins:lts
+    networks:
+      db:
+        ipv4_address: 172.15.0.4
     restart: unless-stopped
     ports:
       - 8091:8080
@@ -11,9 +14,23 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - "./jenkins_home:/var/jenkins_home"
       - "./keystore.jks:/etc/keystore.jks"
+    extra_hosts:
+      - "jira.giovanemere.minikube.io:172.15.0.2"
+      - "bitbucket.giovanemere.minikube.io:172.15.0.3"
+      - "jenkins.giovanemere.minikube.io:127.0.0.1"
+      - "postgress.giovanemere.minikube.io:172.57.0.5"
+      - "artifactory.giovanemere.minikube.io:172.57.0.6"
     environment:
       - JENKINS_OPTS=--httpPort=8080 --httpsPort=8443 --prefix=/devops/jenkins --httpsKeyStore=/etc/keystore.jks --httpsKeyStorePassword=changeit
       - JAVA_OPTS=-Djavax.net.ssl.trustStore=/usr/local/openjdk-8/jre/lib/security/cacerts
       - SONAR_SCANNER_OPTS=-Xmx1024m
       - TZ=America/Bogota
     privileged: true
+
+networks:
+  db:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.15.0.0/24
