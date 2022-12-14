@@ -1,51 +1,44 @@
 #!/bin/bash
 clear
 
-# Eliminar Variables
-unset folder
-unset MenuAprovi
-unset MenuDocker
-unset MenuRanche
-unset username
-unset token
-unset repo
-unset NameHost
-unset repo
-unset NameDir
-unset Port
-unset Range
+# set variables
+source ../unset.sh
 
 # set variables
-user=$(whoami)
-domain="giovanemere.minikube.io"
-pathCompose="/home/ubuntu/Repositorio/Aprovisionamiento_Linux"
+source ../variables_goblales.sh
+
 # set an infinite loop
 while :
 do
 	clear
     # display menu
   
-    echo "- --------------------------------- ---------------------------------- -"
-    echo "-  Server Name: [$(hostname)]       - Server Name: [$(hostname)]       -"
-	echo "- --------------------------------- ---------------------------------- -"
-	echo "-  Menu Docker Subir                - Menu Docker Bajar                -"
-	echo "- --------------------------------- ---------------------------------- -"
-	echo "-  1. Jenkins                       -  2. Jenkins                      -"
-	echo "-  3. Atlassian (jira-bit-post)     -  4. Atlassian (jira-bit-post)    -"
-	echo "-  5. Grafana                       -  6. Grafana                      -"
-	echo "-  7. Prometheus                    -  8. Prometheus                   -"
-	echo "-  9. Sonar                         - 10. Sonar                        -"
-	echo "- 11. Zabbix  Afinar                - 12. Zabbix  Afinar               -"
-    echo "- 13. Artifactory                   - 14. Artifactory                  -"
-    echo "- 15. Nginx   Afinar                - 16. Nginx   Afinar               -"
-    echo "- 17. postgres:9.4                  - 18. postgres:9.4                 -"
-	echo "- --------------------------------- ---------------------------------- -"
-	echo "-  A. Todos las imagenes            - B. Todos los volumenes           -"
-    echo "-  C. Purgar todas las Imagenes     - D. Otros Comandos                -"
-    echo "-  E. Eliminar Imagenes             - F. Listar Imagenes               -"
-	echo "-  G. Entrar a un contenedor        - V. Volver Menu Principal         -"
-    echo "-  E. Exit                          - E. Exit                          -"
-    echo "- --------------------------------- ---------------------------------- -"
+    echo "- ------- - --------------------------------- ---------------------------------- -"
+    echo "- ------- -  Server Name: [$(hostname)]          - Server Name: [$(hostname)]          -"
+	echo "- ------- - --------------------------------- ---------------------------------- -"
+	echo "- Ports          - IP   -  Menu Subir Name: [$(hostname)]      - Docker Bajar Name: [$(hostname)]    -"
+	echo "- ----------------      - --------------------------------- ---------------------------------- -"
+	echo "- 8091:50000:8491-  4   -  1. Jenkins                       -  2. Jenkins                      -"
+	echo "- 8082:7990:7999 -  2,3 -  3. Atlassian (jira-bit-post)     -  4. Atlassian (jira-bit-post)    -"
+	echo "-                -      -  5. Grafana                       -  6. Grafana                      -"
+	echo "-                -      -  7. Prometheus                    -  8. Prometheus                   -"
+	echo "-                -      -  9. Sonar                         - 10. Sonar                        -"
+	echo "-                -      - 11. Zabbix  Afinar                - 12. Zabbix  Afinar               -"
+    echo "- 8081           -  6   - 13. Artifactory                   - 14. Artifactory                  -"
+    echo "-                -      - 15. Nginx   Afinar                - 16. Nginx   Afinar               -"
+    echo "- 5432           -  5   - 17. postgres:9.4                  - 18. postgres:9.4                 -"
+    echo "- 3306           -      - 19. mysql:5.4                     - 20. mysql:5.4                    -"
+    echo "- 8083:8084:8485 -      - 21. moodle:3.6.1                  - 22. moodle:3.6.1                 -"
+	echo "---------------- - ---- - --------------------------------- ---------------------------------- -"
+	echo "- A. Todos las imagenes            - B. Todos los volumenes     -                              -"
+    echo "- C. Purgar todas las Imagenes     - D. Otros Comandos          -                              -"
+    echo "- E. Eliminar Imagenes             - F. Listar Imagenes         -                              -"
+	echo "- G. Entrar a un contenedor        - V. Volver Menu Principal   -                              -"
+    echo "- H. Detalle Redes                 - I. Ip Mages Docker         -                              -"
+    echo "- J. telnet                        - K. logs imagen             -                              -"
+    echo "---------------------------------- ---------------------------- - ---------------------------- -"
+    echo "- X. Exit                          -                            -                              -"
+    echo "---------------------------------- ---------------------------- - ---------------------------- -"
 
 	# get input from the user 
 	read -p "Enter your choice [1-100] " choice
@@ -59,7 +52,7 @@ do
         echo "   Subir Servicio Jenkins "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/Jenkins/jenkins_docker
+        cd $pathUser/compose/Jenkins/jenkins_docker
         docker-compose up -d
         
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -78,7 +71,7 @@ do
         echo "   Detener Servicio Jenkins "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/Jenkins/jenkins_docker
+        cd $pathUser/compose/Jenkins/jenkins_docker
         docker-compose down
         docker ps | grep jenkins
 
@@ -92,7 +85,7 @@ do
         echo "   Subir Servicio atlassian "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/atlassian/
+        cd $pathUser/compose/atlassian/
         docker-compose -p atlassian up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -101,6 +94,8 @@ do
         echo -e "\n----------------------------------------------------------------------------------------"
         echo "   URL: http://jira.$domain:8082"
         echo "   URL: http://bitbucket.$domain:7990"
+
+        sudo chmod 777 -R $pathUser/compose/atlassian/
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
@@ -111,7 +106,7 @@ do
         echo "   Detener Servicio atlassian "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/atlassian/
+        cd $pathUser/compose/atlassian/
         docker-compose -p atlassian down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -127,7 +122,7 @@ do
         echo "   Subir Servicio grafana "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/grafana/
+        cd $pathUser/compose/grafana/
         docker-compose up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -146,7 +141,7 @@ do
         echo "   Detener Servicio grafana "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/grafana/
+        cd $pathUser/compose/grafana/
         docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -162,7 +157,7 @@ do
         echo "   Subir Servicio prometheus "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/prometheus
+        cd $pathUser/compose/prometheus
         docker-compose up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -181,7 +176,7 @@ do
         echo "   Detener Servicio prometheus "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/prometheus
+        cd $pathUser/compose/prometheus
         docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -197,7 +192,7 @@ do
         echo "   Subir Servicio sonar "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/sonar
+        cd $pathUser/compose/sonar
         docker-compose up
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -216,7 +211,7 @@ do
         echo "   Detener Servicio sonar "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/sonar
+        cd $pathUser/compose/sonar
         docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -232,7 +227,7 @@ do
         echo "   Subir Servicio zabbix "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/zabbix
+        cd $pathUser/compose/zabbix
         docker-compose up
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -251,7 +246,7 @@ do
         echo "   Detener Servicio zabbix "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/zabbix
+        ccd $pathUser/compose/zabbix
         docker-compose down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -267,7 +262,7 @@ do
         echo "   Subir Servicio artifactory "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/artifactory/docker-compose/artifactory
+        cd $pathUser/compose/artifactory/docker-compose/artifactory
         sudo docker-compose -f artifactory-oss.yml up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -286,7 +281,7 @@ do
         echo "   Detener Servicio artifactory "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/artifactory/docker-compose/artifactory
+        cd $pathUser/compose/artifactory/docker-compose/artifactory
         sudo docker-compose -f artifactory-oss.yml down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -301,7 +296,7 @@ do
         echo "   Subir Servicio nginx "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/nginx
+        cd $pathUser/compose/nginx
         docker-compose up nginx -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -319,7 +314,7 @@ do
         echo "   Detener Servicio nginx "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/nginx
+        cd $pathUser/compose/nginx
         docker-compose up nginx down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -335,7 +330,7 @@ do
         echo "   Subir Servicio postgress "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/postgress
+        cd $pathUser/compose/postgress
         docker-compose -p postgress up -d
         
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -354,7 +349,7 @@ do
         echo "   Detener Servicio postgress "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        cd $pathCompose/compose/postgress
+        cd $pathUser/compose/postgress
         docker-compose -p postgress down
 
         echo -e "\n----------------------------------------------------------------------------------------"
@@ -364,6 +359,78 @@ do
         read -p "Press [Enter] key to continue..." readEnterKey
         ;;
     
+    19) 	
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo "   Subir Servicio mysql "
+        echo -e "\n----------------------------------------------------------------------------------------"
+        
+        cd $pathUser/compose/mysql
+        docker-compose -p mysql up -d
+        
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo "   URL: http://$domain"
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        docker ps | grep mysql
+
+        echo -e "\n----- Fin del Script -----------------------------------------------------------"
+        read -p "Press [Enter] key to continue..." readEnterKey
+        ;;
+    
+    20) 	
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo "   Detener Servicio mysql "
+        echo -e "\n----------------------------------------------------------------------------------------"
+        
+        cd $pathUser/compose/mysql
+        docker-compose -p mysql down
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        docker ps | grep mysql
+
+        echo -e "\n----- Fin del Script -----------------------------------------------------------"
+        read -p "Press [Enter] key to continue..." readEnterKey
+        ;;
+    
+    21) 	
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo "   Subir Servicio moodle + mysql "
+        echo -e "\n----------------------------------------------------------------------------------------"
+        
+        cd $pathUser/compose/moodle
+        docker-compose up -d --build
+        docker exec php7 chown www-data:www-data /var/www/moodledata
+        
+        
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo "   URL: http://$domain"
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        docker ps | grep moodle
+
+        echo -e "\n----- Fin del Script -----------------------------------------------------------"
+        read -p "Press [Enter] key to continue..." readEnterKey
+        ;;
+    
+    22) 	
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo "   Detener Servicio moodle + mysql "
+        echo -e "\n----------------------------------------------------------------------------------------"
+        
+        cd $pathUser/compose/moodle
+        docker-compose down
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        docker ps | grep moodle
+
+        echo -e "\n----- Fin del Script -----------------------------------------------------------"
+        read -p "Press [Enter] key to continue..." readEnterKey
+        ;;
+
     A)
         docker ps -a
 
@@ -431,13 +498,87 @@ do
         read -p ">> Digite el nombre de la Imagen : " nameImage
         echo -e "\n----------------------------------------------------------------------------------------"
 
-        docker exec -it $nameImage bash
+        if [ "$nameImage" = "postgress_database_1" ] 
+            then
+                docker exec -it $nameImage psql -U postgres
+            else
+                docker exec -it $nameImage bash
+            fi
 
         echo -e "\n----- Fin del Script -----------------------------------------------------------"
 		    read -p "Press [Enter] key to continue..." readEnterKey
         ;;
 
+    H)
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo "   Detalle de la Red Docker "
+        echo -e "\n----------------------------------------------------------------------------------------"
+
+        docker network ls
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        read -p ">> Digite el ID de la red default [bridge] : " idInspect
+        echo -e "\n----------------------------------------------------------------------------------------"
+
+        docker network inspect "$idInspect"
+
+        echo -e "\n----- Fin del Script -----------------------------------------------------------"
+             read -p "Press [Enter] key to continue..." readEnterKey
+        ;;
     
+    I)
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo "   Detalle IP de Imagen Docker "
+        echo -e "\n----------------------------------------------------------------------------------------"
+
+        docker ps --format '{{.Names}}'
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        read -p ">> Digite el ID de la red default (Names)] : "  idRed
+        echo -e "\n----------------------------------------------------------------------------------------"
+
+        docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$idRed"
+
+        echo -e "\n----- Fin del Script -----------------------------------------------------------"
+             read -p "Press [Enter] key to continue..." readEnterKey
+        ;;
+    
+    J)
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo    "  Telnet Puerto "
+        echo -e "\n----------------------------------------------------------------------------------------"
+
+        docker ps --format '{{.Names}}'
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        read -p ">> Digite el ID de la red default (Names)] : "  IDImage
+        read -p ">> Digite el DNS : "  DNS
+        read -p ">> Digite el puerto : "  Port
+        echo -e "\n----------------------------------------------------------------------------------------"
+
+        docker exec "$IDImage" curl -v telnet://"$DNS":"$Port"
+
+        echo -e "\n----- Fin del Script -----------------------------------------------------------"
+             read -p "Press [Enter] key to continue..." readEnterKey
+        ;;
+    
+    K)
+        echo -e "\n----------------------------------------------------------------------------------------"
+        echo "   Logs Imagen Docker "
+        echo -e "\n----------------------------------------------------------------------------------------"
+
+        docker ps -a
+
+        echo -e "\n----------------------------------------------------------------------------------------"
+        read -p ">> Digite el ID de la imagen  : "  idLog
+        echo -e "\n----------------------------------------------------------------------------------------"
+
+        docker logs "$idLog"
+
+        echo -e "\n----- Fin del Script -----------------------------------------------------------"
+             read -p "Press [Enter] key to continue..." readEnterKey
+        ;;
+
     V)
         sh ~/Aprovisionamiento_Linux/Setup.sh
 
@@ -445,7 +586,7 @@ do
 		    read -p "Press [Enter] key to continue..." readEnterKey
         ;;
 
-  	E)
+  	X)
         echo "Gracias!"
         exit 0
         ;;

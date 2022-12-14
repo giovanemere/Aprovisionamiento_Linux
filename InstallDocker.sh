@@ -2,17 +2,13 @@
 clear
 
 # Eliminar Variables
-./unset.sh
+source unset.sh
 
 # set variables
-    pathUser="/home/ubuntu/Repositorios/"
-    pattern="*.yml"
-    pathVol="/rancher-vol"
-    application="docker"
+ source variables_goblales.sh
+
     compose="compose/$application"
-    fileCompose="docker-compose"
     folderSource="$pathUser/Aprovisionamiento_Linux/$compose/$fileCompose/$application"
-    ipa=$(hostname -i | cut -d " " -f 1)
 
 # set an infinite loop
 while :

@@ -2,19 +2,16 @@
 clear
 
 # Eliminar Variables
-./unset.sh
+	source unset.sh
 
 # set variables
-	folder="/home/ubuntu/Repositorios/Aprovisionamiento_Linux"
-	MenuAprovi="AprovisionarServer.sh"
-	MenuAdminDocker="SetupDocker.sh"
-	MenuDocker="InstallDocker.sh"
-	MenuRanche="InstallRancher.sh"
+	source variables_goblales.sh
 
 # set an infinite loop
 while :
 do
     clear
+	
 	# display menu
     echo "- ------------------------------------------------------------------------- -"
     echo "- Server Name: [$(hostname)]                                                 "
@@ -50,7 +47,7 @@ do
 			echo "Menu Aprovisionamiento "
 			echo "---------------------------------------------------------------------------------------"
 
-			cd $folder && ./$MenuAprovi
+			cd $pathUser && ./$MenuAprovi
 
 			echo "---------------------------- Fin del Script ---------------------------------"
 			read -p "Press [Enter] key to continue..." readEnterKey
@@ -73,8 +70,8 @@ do
 				read -p ">> Digite el comentario : " comment				
 				echo "---------------------------------------------------------------------------------------"
 
-				echo "cd $folder && ./PushGit.sh $username $token $repo \"$comment\""
-				cd $folder && ./PushGit.sh $username $token $repo "$comment" $clone
+				echo "cd $pathUser && ./PushGit.sh $username $token $repo \"$comment\""
+				cd $pathUser && ./PushGit.sh $username $token $repo "$comment" $clone
 
 			fi
 
@@ -89,7 +86,7 @@ do
 			echo "Menu Docker "
 			echo "---------------------------------------------------------------------------------------"
 
-			cd $folder && ./$MenuDocker
+			cd $pathUser && ./$MenuDocker
 
 			echo "---------------------------- Fin del Script ---------------------------------"
 			read -p "Press [Enter] key to continue..." readEnterKey
@@ -102,7 +99,7 @@ do
 			echo "Menu Rancher "
 			echo "---------------------------------------------------------------------------------------"
 
-			cd $folder && ./$MenuRanche
+			cd $pathUser && ./$MenuRanche
 
 			echo "-------------------------- Fin del Script -----------------------------------"
 			read -p "Press [Enter] key to continue..." readEnterKey
@@ -115,7 +112,7 @@ do
 			echo "Instalar kubectl   "
 			echo "---------------------------------------------------------------------------------------"
 
-			cd $folder && ./Installkubectl.sh
+			cd $pathUser && ./Installkubectl.sh
 
 			echo "-------------------------- Fin del Script -----------------------------------"
 			read -p "Press [Enter] key to continue..." readEnterKey
@@ -128,7 +125,7 @@ do
 			echo "Instalar kubectl   "
 			echo "---------------------------------------------------------------------------------------"
 
-			cd $folder && ./Installhelm.sh
+			cd $pathUser && ./Installhelm.sh
 
 			echo "-------------------------- Fin del Script -----------------------------------"
 			read -p "Press [Enter] key to continue..." readEnterKey
@@ -141,7 +138,7 @@ do
 			echo "Instalar Artifactory   "
 			echo "---------------------------------------------------------------------------------------"
 
-			cd $folder && ./InstallArtifactory.sh
+			cd $pathUser && ./InstallArtifactory.sh
 
 			echo "-------------------------- Fin del Script -----------------------------------"
 			read -p "Press [Enter] key to continue..." readEnterKey
@@ -153,7 +150,7 @@ do
 			echo "Instalar Artifactory   "
 			echo "---------------------------------------------------------------------------------------"
 
-			cd $folder && ./InstallArtifactoryXray.sh
+			cd $pathUser && ./InstallArtifactoryXray.sh
 
 			echo "-------------------------- Fin del Script -----------------------------------"
 			read -p "Press [Enter] key to continue..." readEnterKey
@@ -166,7 +163,7 @@ do
 			echo "Instalar Jenkins   "
 			echo "---------------------------------------------------------------------------------------"
 
-			cd $folder && ./InstallJenkins.sh
+			cd $pathUser && ./InstallJenkins.sh
 
 			echo "-------------------------- Fin del Script -----------------------------------"
 			read -p "Press [Enter] key to continue..." readEnterKey
@@ -179,7 +176,7 @@ do
 			echo "Instalar Jenkins   "
 			echo "---------------------------------------------------------------------------------------"
 
-			cd $folder && ./InstallPortainer.sh
+			cd $pathUser && ./InstallPortainer.sh
 
 			echo "-------------------------- Fin del Script -----------------------------------"
 			read -p "Press [Enter] key to continue..." readEnterKey
@@ -226,8 +223,7 @@ do
 			;;
 
 		14)
-			
-			cd $folder && $folder/compose/$MenuAdminDocker
+			"compose/$MenuAdminDocker"
 			
 			echo ---------- Fin del Script ----------------------------
 			read -p "Press [Enter] key to continue..." readEnterKey

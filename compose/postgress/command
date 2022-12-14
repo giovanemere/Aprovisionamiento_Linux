@@ -12,3 +12,6 @@ CREATE DATABASE zabbix;
 CREATE DATABASE zabbixNew;
 \l
 \q
+
+
+SELECT name, setting FROM pg_settings WHERE category = 'File Locations';

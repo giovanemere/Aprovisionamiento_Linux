@@ -1,0 +1,12 @@
+#user=$(whoami)
+domain="giovanemere.minikube.io"
+pathUser="/home/ubuntu/Repositorios/Aprovisionamiento_Linux"
+MenuAprovi="AprovisionarServer.sh"
+MenuAdminDocker="SetupDocker.sh"
+MenuDocker="InstallDocker.sh"
+MenuRanche="InstallRancher.sh"
+pattern="*.yml"
+pathVol="/rancher-vol"
+application="docker"
+fileCompose="docker-compose"
+#ipa=$(hostname -i | cut -d " " -f 1)

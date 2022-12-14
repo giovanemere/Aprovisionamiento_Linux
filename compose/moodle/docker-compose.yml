@@ -1,0 +1,65 @@
+version: '3.4'
+
+services:
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql/data:/var/lib/mysql
+    restart: always
+    networks:
+      default:
+        ipv4_address: ${MYSQL_HOST}  
+    env_file: .env
+    privileged: true
+  
+  php:
+    build:
+      context: ./php7-fpm
+    image: php7-fpm:moodle
+    container_name: php7
+    ports:
+      - "9000:9000"
+    env_file: .env
+    volumes:
+      - "./data/moodle/moodle:/var/www/html/moodle"
+      - "./data/moodle/moodledata:/var/www/moodledata"
+    networks:
+      default:
+        ipv4_address: ${PHP_HOST} 
+    privileged: true
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./config/nginx:/etc/nginx/conf.d"
+      - "./data/moodle/moodle:/var/www/html/moodle"
+      - "./data/moodle/moodledata:/var/www/moodledata"
+      - "./logs:/var/log/nginx"
+    links:
+      - php
+    depends_on:
+      - php
+    env_file: .env
+    networks:
+      default:
+        ipv4_address: ${NGINX_HOST}  
+    privileged: true
+  
+networks:
+  default:
+    external:
+      name: jenkins_docker_db

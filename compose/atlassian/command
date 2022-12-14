@@ -56,3 +56,70 @@ docker exec -it 66ec31f0acc5 bash
 
 curl -v telnet://jira.giovanemere.minikube.io:8082
 curl -v telnet://192.168.137.5:8082
+
+
+SSL
+https://medium.com/@juravski.daniel/jira-over-https-in-docker-c1cf3ee3fb00
+
+
+Jenkins for Jira
+https://github.com/atlassian/jenkins-for-jira
+
+
+docker network create my-net
+docker network connect bridge service2
+
+docker network connect my-net my-nginx
+docker network disconnect my-net my-nginx
+
+
+Enable forwarding from Docker containers to the outside world
+By default, traffic from containers connected to the default bridge network is not forwarded to the outside world. To enable forwarding, you need to change two settings. These are not Docker commands and they affect the Docker host’s kernel.
+
+Configure the Linux kernel to allow IP forwarding.
+
+ sudo sysctl net.ipv4.conf.all.forwarding=1
+Change the policy for the iptables FORWARD policy from DROP to ACCEPT.
+
+ sudo iptables -P FORWARD ACCEPT
+
+
+ Logs
+
+ enable logs 
+ https://confluence.atlassian.com/jirakb/how-to-collect-data-to-troubleshoot-webhook-failure-in-jira-397083035.html
+ 
+ atlassian-jira.log:
+
+docker network ls
+docker network inspect bridge | grep atlassian_bitbucket_1 | grep "IPv4Address"
+
+Containers": {
+            "0a30473afb0569ec9934025ac1a6a60c28679d75b898efab1c538de486c195f8": {
+                "Name": "jenkins_docker_jenkins-devops_1",
+                "EndpointID": "e94fd52c418393809279bcbf3f510780d3d9b3ee8c0c9738b9c78a637d1225f7",
+                "MacAddress": "02:42:ac:11:00:03",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": ""
+            },
+            "118bce9ba82a438fb28f6af46e74375bb035b2bf3f21378e3ad7bb3d2c2f249c": {
+                "Name": "atlassian_jira_1",
+                "EndpointID": "e17f01e091e62a352c45b4c97cef8683ce5950b925fb7afc7a519f0137bcaf51",
+                "MacAddress": "02:42:ac:11:00:02",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            },
+            "b2160876a3df4a808b43f9a337cab55ca42d94926c0a7f8ed7f90cfa27a1bc2c": {
+                "Name": "atlassian_bitbucket_1",
+                "EndpointID": "6833e98e0487ddb466e1fede8f540940b83a96e3856bd8b5e101c820c0579f17",
+                "MacAddress": "02:42:ac:11:00:05",
+                "IPv4Address": "172.17.0.5/16",
+                "IPv6Address": ""
+            },
+            "edde010e27ff72d8fa38b161f192942dbd361a7ea1ed5846024299ac37b4a9fd": {
+                "Name": "postgress_database_1",
+                "EndpointID": "96fc5208adbc7651630776e73c5ad13f0d506a0c3dced1448e6ff2198ec12885",
+                "MacAddress": "02:42:ac:11:00:04",
+                "IPv4Address": "172.17.0.4/16",
+                "IPv6Address": ""
+            }

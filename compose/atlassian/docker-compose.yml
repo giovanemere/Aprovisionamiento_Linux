@@ -2,19 +2,44 @@ version: '3.4'
 services:
   jira:
     image: atlassian/jira-software:latest
+    networks:
+      default:
+        ipv4_address: 172.15.0.2
     restart: always
     ports:
       - 8082:8080
     volumes:
-      - jira-data:/var/atlassian/jira
-
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "./jira:/var/atlassian/application-data/jira"
+    extra_hosts:
+      - "jira.giovanemere.minikube.io:127.0.0.1"
+      - "bitbucket.giovanemere.minikube.io:172.15.0.3"
+      - "jenkins.giovanemere.minikube.io:172.57.0.4"
+      - "postgress.giovanemere.minikube.io:172.57.0.5"
+      - "artifactory.giovanemere.minikube.io:172.57.0.6"
+    privileged: true
+      
   bitbucket:
     image: atlassian/bitbucket-server:5.10.1
+    networks:
+      default:
+        ipv4_address: 172.15.0.3
     restart: always
     ports:
       - 7990:7990
+      - 7999:7999
     volumes:
-      - bitbucket-data:/var/atlassian/application-data/bitbucket
-volumes:
-  jira-data:
-  bitbucket-data:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "./bitbucket:/var/atlassian/application-data/bitbucket"
+    extra_hosts:
+      - "jira.giovanemere.minikube.io:172.15.0.2"
+      - "bitbucket.giovanemere.minikube.io:127.0.0.1"
+      - "jenkins.giovanemere.minikube.io:172.57.0.4"
+      - "postgress.giovanemere.minikube.io:172.57.0.5"
+      - "artifactory.giovanemere.minikube.io:172.57.0.6"
+    privileged: true
+  
+networks:
+  default:
+    external:
+      name: jenkins_docker_db

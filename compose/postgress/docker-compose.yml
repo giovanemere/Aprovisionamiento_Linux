@@ -3,6 +3,9 @@ services:
 
   database:
     image: postgres:9.4
+    networks:
+      default:
+        ipv4_address: 172.15.0.5
     restart: always
     ports:
       - 5432:5432
@@ -10,8 +13,17 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     volumes:
-      - database-data:/var/lib/postgresql/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "./data:/var/lib/postgresql/data"
+    extra_hosts:
+      - "jira.giovanemere.minikube.io:172.15.0.2"
+      - "bitbucket.giovanemere.minikube.io:172.15.0.3"
+      - "jenkins.giovanemere.minikube.io:172.57.0.4"
+      - "postgress.giovanemere.minikube.io:127.0.0.1"
+      - "artifactory.giovanemere.minikube.io:172.57.0.6"
+    privileged: true
 
-volumes:
-  database-data:
-    driver: local
+networks:
+  default:
+    external:
+      name: jenkins_docker_db
