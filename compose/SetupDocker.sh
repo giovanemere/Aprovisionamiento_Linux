@@ -266,10 +266,8 @@ do
         echo "   Subir Servicio artifactory "
         echo -e "\n----------------------------------------------------------------------------------------"
         
-        chown -R $user:$user $pathUser
-        chmod -R 777 $pathUser
-
         cd $pathUser/compose/artifactory/docker-compose/artifactory
+        sudo ./prepareHostEnv.sh -t oss -c
         sudo docker-compose -f artifactory-oss.yml up -d
 
         echo -e "\n----------------------------------------------------------------------------------------"
